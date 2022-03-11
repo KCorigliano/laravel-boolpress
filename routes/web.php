@@ -25,5 +25,9 @@ Route::middleware('auth')
     ->prefix('admin')
     ->group(function(){
         Route::get('/', 'Homecontroller@index')
-        ->name('home');
+        ->name('admin');
     });
+
+Route::get("{any?}", function() {
+    return view("admin.home");
+})->where("any", ".*");
