@@ -29,7 +29,8 @@ class AddForeignCategoriesKeyInPostTable extends Migration
     public function down()
     {
         Schema::table('post', function (Blueprint $table) {
-            //
+            $table->dropForeign("posts_category_id_foreign");
+            $table->dropColumn("category_id");
         });
     }
 }
