@@ -79,7 +79,11 @@
                     @endauth
                 </div>
             @endif
-            <div id="app"></div>
+            @auth
+                <div id="app"></div>
+            @else
+
+            @endauth
         </div>
 
         <script src="{{ asset('js/vue.js') }}"></script>
