@@ -13,9 +13,9 @@ class UpdatePostsIdTagsPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('post_tags', function (Blueprint $table) {
-            $table->bigIncrements('posts_id')->change();
-            $table->bigIncrements('tags_id')->change();
+        Schema::table('tags_posts', function (Blueprint $table) {
+            $table->bigInteger('posts_id')->change();
+            $table->bigInteger('tags_id')->change();
         });
     }
 
@@ -26,7 +26,7 @@ class UpdatePostsIdTagsPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('post_tags', function (Blueprint $table) {
+        Schema::table('tags_posts', function (Blueprint $table) {
             $table->integer('posts_id')->change();
             $table->integer('tags_id')->change();
         });
