@@ -27,6 +27,8 @@
                   placeholder="Inizia a scrivere qualcosa..." required>{{ old('content', $post->content) }}</textarea>
             </div>
 
+            {{ $post->tags->name }}
+
             <div class="form-group">
                 <a href="{{ route('admin.post.show', $post->id) }}" class="btn btn-danger">Annulla</a>
                 <button type="submit" class="btn btn-success">Salva post</button>

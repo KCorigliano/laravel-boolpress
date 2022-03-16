@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Categories;
+use App\Tags;
+use App\Posts_tags;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
