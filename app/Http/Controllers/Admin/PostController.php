@@ -7,6 +7,7 @@ use App\Tags;
 use App\Posts_tags;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Facade\Ignition\Tabs\Tab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,6 +51,7 @@ class PostController extends Controller
         $post->fill($data);
         $post->user_id = Auth::user()->id;
         $post->save();
+        $post->tags()->attach($data["tags"]);
         return redirect()->route("admin.post.index");
     }
 
@@ -72,7 +74,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', compact('post'));
+        $tags = Tags::all();
+        return view('admin.post.edit', compact('post', 'tags'));
     }
 
     /**
@@ -86,6 +89,7 @@ class PostController extends Controller
     {
         $data = $request->all();
         $post->update($data);
+        $post->tags()->sync($data["tags"]);
         return redirect()->route('admin.post.show', $post->id);
     }
 

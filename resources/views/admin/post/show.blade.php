@@ -15,8 +15,9 @@
                 </div>
 
                 <div>
+                    <p class="mb-0 mt-3">Tags:</p>
                     @foreach ($post->tags as $tag)
-                        {{ $tag->name }}
+                        <p class="mb-1 mx-4">- {{ $tag->name }}</p>
                     @endforeach
                 </div>
             </div>
