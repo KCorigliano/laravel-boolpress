@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tags extends Model
 {
-    public function post_tags() {
-        return $this->belongsToMany("App\Posts_tags");
+    protected $table = 'tags';
+
+    public function posts() {
+        return $this->belongsToMany("App\Post");
     }
 }

@@ -10,8 +10,15 @@
                     <p><a class="ms-auto" href="{{ route('admin.post.edit', $post->id) }}">Modifica</a></p>
                 </div>
                 <p>{{$post->content}}</p>
-                <p class="font-italic mb-0">{{$post->user->name}}</p>
-                <p class="font-italic">{{$post->user->email}}</p>
+                <div class="row align-items-center">
+                    <p class="font-italic mb-0 px-3">{{$post->user->name}} - {{$post->user->email}}</p>
+                </div>
+
+                <div>
+                    @foreach ($post->tags as $tag)
+                        {{ $tag->name }}
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
