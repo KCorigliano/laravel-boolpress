@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::paginate(5);
 
-        $posts->load("post");
+        // $posts->load("post");
 
         return response()->json($posts);
     }

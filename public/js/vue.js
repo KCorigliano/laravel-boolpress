@@ -1908,6 +1908,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1915,9 +1917,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
-  components: {}
+  components: {},
+  data: function data() {
+    return {
+      posts: [],
+      pagination: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://127.0.0.1:8000/api/posts').then(function (response) {
+      return _this.posts = response.data.data;
+    });
+  }
 });
 
 /***/ }),
@@ -38153,20 +38175,29 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container text-center mt-3" }, [
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.posts, function (post, i) {
+        return _c("div", { key: i, staticClass: "card col mb-2 mx-2 p-2" }, [
+          _c("h3", [_vm._v(_vm._s(post.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(post.content))]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", [_vm._v("Creato il:")]),
+            _vm._v(" " + _vm._s(post.updated_at)),
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(post.user_id))]),
+        ])
+      }),
+      0
+    ),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container text-center" }, [
-      _c("h1", [_vm._v("Benvenuto nella home")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Registrati o esegui il login se non lo hai fatto!")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
