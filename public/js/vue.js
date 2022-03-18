@@ -1923,6 +1923,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -38175,22 +38177,32 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container text-center mt-3" }, [
+  return _c("div", { staticClass: "container mt-3" }, [
     _c(
       "div",
       { staticClass: "row" },
       _vm._l(_vm.posts, function (post, i) {
-        return _c("div", { key: i, staticClass: "card col mb-2 mx-2 p-2" }, [
+        return _c("div", { key: i, staticClass: "card col mb-2 mx-2 p-4" }, [
           _c("h3", [_vm._v(_vm._s(post.title))]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(post.content))]),
           _vm._v(" "),
-          _c("p", [
-            _c("span", [_vm._v("Creato il:")]),
-            _vm._v(" " + _vm._s(post.updated_at)),
-          ]),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            _vm._l(post.tags, function (tag, i) {
+              return _c("span", { key: i, staticClass: "me-3" }, [
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v("#" + _vm._s(tag.name)),
+                ]),
+              ])
+            }),
+            0
+          ),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(post.user_id))]),
+          _c("p", { staticClass: "fst-italic" }, [
+            _vm._v("Nome utente: " + _vm._s(post.user.name)),
+          ]),
         ])
       }),
       0
