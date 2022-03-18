@@ -10,15 +10,32 @@
                     <p><a class="ms-auto" href="{{ route('admin.post.edit', $post->id) }}">Modifica</a></p>
                 </div>
                 <p>{{$post->content}}</p>
-                <div class="row align-items-center">
-                    <p class="font-italic mb-0 px-3">{{$post->user->name}} - {{$post->user->email}}</p>
-                </div>
-
-                <div>
-                    <p class="mb-0 mt-3">Tags:</p>
+                
+                <div class="mb-3">
+                    <p class="mb-0">Tags:</p>
                     @foreach ($post->tags as $tag)
-                        <p class="mb-1 mx-4">- {{ $tag->name }}</p>
+                    <p class="mx-4">- {{ $tag->name }}</p>
                     @endforeach
+                </div>
+                
+                <div class="row align-items-center">
+                    <p
+                    class="font-italic mb-0 px-3">
+                    @php
+                        use Carbon\Carbon;
+                        $euroFormat = 'd/m/Y H:i';
+                    @endphp
+                        {{$post->user->name}} 
+                        - 
+                        {{$post->user->email}} 
+                        -
+
+                    @if ($post->updated_at->diffForHumans(Carbon::now()<12))
+                        {{ $post->updated_at->diffForHumans(Carbon::now()) }}
+                    @else
+                        {{$post->updated_at->format($euroFormat)}}</p>
+                        
+                    @endif
                 </div>
             </div>
         </div>
