@@ -31,9 +31,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        return view("admin.post.create");
+        $tags = Tags::all();
+        return view("admin.post.create", compact("tags", "post"));
     }
 
     /**

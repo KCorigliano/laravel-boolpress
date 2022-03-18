@@ -1925,6 +1925,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -1940,7 +1943,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://127.0.0.1:8000/api/posts').then(function (response) {
       return _this.posts = response.data.data;
-    });
+    }, this.pagination = response.data);
   }
 });
 
@@ -38178,20 +38181,24 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-3" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row" },
       _vm._l(_vm.posts, function (post, i) {
         return _c("div", { key: i, staticClass: "card col mb-2 mx-2 p-4" }, [
-          _c("h3", [_vm._v(_vm._s(post.title))]),
+          _c("h3", { staticClass: "border-bottom" }, [
+            _vm._v(_vm._s(post.title)),
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(post.content))]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "d-flex" },
+            { staticClass: "d-flex justify-content-between" },
             _vm._l(post.tags, function (tag, i) {
-              return _c("span", { key: i, staticClass: "me-3" }, [
+              return _c("span", { key: i }, [
                 _c("a", { attrs: { href: "#" } }, [
                   _vm._v("#" + _vm._s(tag.name)),
                 ]),
@@ -38200,8 +38207,8 @@ var render = function () {
             0
           ),
           _vm._v(" "),
-          _c("p", { staticClass: "fst-italic" }, [
-            _vm._v("Nome utente: " + _vm._s(post.user.name)),
+          _c("p", { staticClass: "fst-italic border-top mt-2" }, [
+            _vm._v(_vm._s(post.user.name)),
           ]),
         ])
       }),
@@ -38209,7 +38216,16 @@ var render = function () {
     ),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mb-4 text-center" }, [
+      _c("h1", [_vm._v("Lista dei post")]),
+    ])
+  },
+]
 render._withStripped = true
 
 

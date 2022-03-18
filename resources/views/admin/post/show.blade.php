@@ -25,17 +25,12 @@
                         use Carbon\Carbon;
                         $euroFormat = 'd/m/Y H:i';
                     @endphp
-                        {{$post->user->name}} 
-                        - 
-                        {{$post->user->email}} 
-                        -
-
-                    @if ($post->updated_at->diffForHumans(Carbon::now()<12))
-                        {{ $post->updated_at->diffForHumans(Carbon::now()) }}
-                    @else
-                        {{$post->updated_at->format($euroFormat)}}</p>
+                    {{$post->user->name}} 
+                    - 
+                    {{$post->user->email}} 
+                    -
+                    {{$post->updated_at->format($euroFormat)}}</p>
                         
-                    @endif
                 </div>
             </div>
         </div>
