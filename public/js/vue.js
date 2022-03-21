@@ -1926,6 +1926,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   components: {},
@@ -1938,6 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
     this.routes = this.$router.getRoutes().filter(function (route) {
       return route.meta.linkText;
     });
+    console.log(this.routes);
   }
 });
 
@@ -2096,6 +2105,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_TheNavbar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/TheNavbar.vue */ "./resources/js/components/TheNavbar.vue");
+//
+//
 //
 //
 //
@@ -6492,7 +6503,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h1[data-v-eca07cf4] {\n  font-size: 58px;\n}", ""]);
+exports.push([module.i, ".container-fluid[data-v-eca07cf4] {\n  width: 100%;\n  height: 75px;\n  text-align: center;\n  background-color: #5a6268;\n}\n.container-fluid .d-flex[data-v-eca07cf4] {\n  align-items: center;\n}\n.container-fluid .d-flex .nav-links[data-v-eca07cf4] {\n  margin-right: 15px;\n  font-size: 24px;\n  text-decoration: none;\n  color: whitesmoke;\n  line-height: 75px;\n}\n.container-fluid .d-flex .nav-links[data-v-eca07cf4]:hover {\n  filter: brightness(70%);\n}", ""]);
 
 // exports
 
@@ -39158,18 +39169,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container mt-3" },
-    _vm._l(_vm.routes, function (route) {
-      return _c(
-        "router-link",
-        { key: route.path, staticClass: "mx-2", attrs: { to: route.path } },
-        [_vm._v(_vm._s(route.meta.title))]
-      )
-    }),
-    1
-  )
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c(
+      "div",
+      { staticClass: "d-flex align-items-center justify-content-center" },
+      _vm._l(_vm.routes, function (route) {
+        return _c(
+          "router-link",
+          {
+            key: route.path,
+            staticClass: "nav-links",
+            attrs: { to: route.path },
+          },
+          [_vm._v("\n            " + _vm._s(route.meta.title) + "\n        ")]
+        )
+      }),
+      1
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39359,8 +39376,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container mt-3" },
-    [_c("the-navbar"), _vm._v(" "), _c("router-view")],
+    [
+      _c("the-navbar"),
+      _vm._v(" "),
+      _c("div", { staticClass: "container mt-3" }, [_c("router-view")], 1),
+    ],
     1
   )
 }
@@ -55109,7 +55129,7 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
-    path: "/",
+    path: "/homepage",
     component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: "home.index",
     meta: {
