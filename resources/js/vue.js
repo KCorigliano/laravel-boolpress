@@ -14,6 +14,7 @@ require('./bootstrap');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 import App from "./views/App";
+import router from "./router";
 
 
 /**
@@ -24,5 +25,6 @@ import App from "./views/App";
 
 const app = new Vue({
     el: '#app',
-    render: (h) => h(App)
+    render: (h) => h(App),
+    router: router
 });
