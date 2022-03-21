@@ -1,19 +1,19 @@
 <template>
     <div>
-        <div class="row mb-4 text-center">
+        <div class="mb-4 text-center">
             <h1>Lista dei post</h1>
-        </div>
-        <div class="row">
-            <div class="card col-3 mb-2 mx-2 p-4" v-for="(post, i) in posts" :key="i">
-                <h3 class="border-bottom">{{post.title}}</h3>
-                <p>{{post.content}}</p>
-                <div class="d-flex justify-content-between">
-                    <span v-for="(tag,i) in post.tags" :key="i"><a href="#">#{{tag.name}}</a></span>
-                </div>
-                <p class="fst-italic border-top mt-2">{{post.user.name}}</p>
+            <div class="d-flex card-row justify-content-center">
+                <index 
+                    v-for="post, i in posts"
+                    :key="i"
+                    :title="post.title"
+                    :content="post.content"
+                    :tags="post.tags"
+                    :userName="post.user"
+                    :post="posts"
+                />
             </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center">
             <button
               class="btn btn-secondary"
               @click="changePage(pagination.current_page - 1)"
@@ -28,13 +28,19 @@
             >Next
             </button>
         </div>
+        </div>
+        
     </div>
 </template>
 
 <script>
 import axios from "axios";
+import Index from './Posts/Index.vue';
 
 export default {
+    components:{
+        Index
+    },
     data() {
         return {
             posts:[],
@@ -61,5 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.card-row{
+    flex-wrap: wrap;
+}
 </style>
