@@ -3,7 +3,7 @@
         <div class="mb-4 text-center">
             <h1>Lista dei post</h1>
             <div class="d-flex card-row justify-content-center">
-                <index 
+                <post-card
                     v-for="post, i in posts"
                     :key="i"
                     :title="post.title"
@@ -35,11 +35,11 @@
 
 <script>
 import axios from "axios";
-import Index from './Posts/Index.vue';
+import PostCard from './posts/PostCard.vue';
 
 export default {
     components:{
-        Index
+        PostCard
     },
     data() {
         return {
