@@ -10,7 +10,7 @@
                     :content="post.content"
                     :tags="post.tags"
                     :userName="post.user"
-                    :post="posts"
+                    :post="post"
                 />
             </div>
             <div class="d-flex align-items-center justify-content-center">

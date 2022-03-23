@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <h1>{{posts.title}}</h1>
+    <div class="card p-2">
+        <h1 class="text-center">{{post.title}}</h1>
+        <h4>{{post.content}}</h4>
+        <p>Creato da: {{post.user.name}}</p>
     </div>
 </template>
 
@@ -8,17 +10,24 @@
 export default {
      data() {
         return {
-            post:[],
+            post:{},
         }
-    },
-    mounted() {
-        this.postsFiller();
     },
     methods: {
         async postsFiller() {
             const result = await axios.get("/api/posts/" + this.$route.params.post);
-            console.log(result)
+            this.post = result.data;
+            console.log(this.post)
         },
+    },
+    mounted() {
+        this.postsFiller();
     },
 }
 </script>
+
+<style lang="scss" scoped>
+p{
+    font-style: italic;
+}
+</style>

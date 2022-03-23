@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "./pages/Home.vue"
-import Contacts from "./pages/Contacts.vue"
-import PostShow from "./pages/posts/show"
+import Home from "./pages/Home.vue";
+import Contacts from "./pages/Contacts.vue";
+import PostShow from "./pages/posts/Show.vue";
 
 Vue.use(VueRouter);
 

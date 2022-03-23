@@ -26,7 +26,6 @@ export default {
     },
     mounted() {
         this.routes=this.$router.getRoutes().filter((route) => route.component == "Show")
-        console.log(this.routes)
     },
 }
 </script>

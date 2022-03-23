@@ -51,7 +51,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::where("id", $id)->with(["tags", "user"])->first();
+
+        return response()->json($post);
     }
 
     /**

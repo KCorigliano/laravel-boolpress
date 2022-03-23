@@ -8,6 +8,8 @@
             >
                 {{route.meta.title}}
             </router-link>
+            <a class="nav-links" href="/login" v-if="!user">Login</a>
+            <a class="nav-links" href="/admin" v-else>{{user.name}}</a>
         </div>
     </div>
 </template>
@@ -19,12 +21,25 @@
         components: {},
         data() {
             return {
-                routes: []
+                routes: [],
+                user: null,
             }
         },
         mounted() {
             this.routes=this.$router.getRoutes().filter((route) => route.meta.linkText);
             console.log(this.routes)
+            this.catchUser();
+        },
+        methods: {
+            catchUser(){
+                axios.get("/api/user").then(resp=> {
+                    this.user=resp.data;
+                    localStorage.setItem("user", JSON.stringify(resp.data));
+                }).catch((er)=>{
+                    console.error("Utente non loggato");
+                    localStorage.removeItem("user");
+                })
+            }
         },
     }
 </script>
