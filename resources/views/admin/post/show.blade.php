@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card px-4 py-2">
                 @if ($post->image)
-                    <img src="{{ asset('storage/' . $post->images) }}" alt="" class="img-fluid">
+                    <img src="{{ asset('storage/' . $post->image) }}" alt="" class="img-fluid">
                 @else
                     <img src="https://via.placeholder.com/1024x480" alt="" class="img-fluid">
                 @endif

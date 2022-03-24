@@ -51,7 +51,7 @@ class PostController extends Controller
             "content" => "required|min:4",
             "category_id" => "nullable",
             "tags" => "nullable",
-            "image" => "nullable|image|max:500"
+            "image" => "nullable|file|max:500"
         ]);
         $data = $request->all();
 
@@ -98,7 +98,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            "title" => "required|min:5",
+            "content" => "required|min:4",
+            "category_id" => "nullable",
+            "tags" => "nullable",
+            "image" => "nullable|file|max:500"
+        ]);
         // se data contiene la chiave "coverImg", indica che l'utente sta caricando un file
         $post->update($data);
         if (key_exists("image", $data)) {

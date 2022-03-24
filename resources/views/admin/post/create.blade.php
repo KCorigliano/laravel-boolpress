@@ -11,7 +11,7 @@
 
           <div class="card-body">
 
-            <form action="{{ route('admin.post.store') }}" method="post">
+            <form action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
               @csrf
 
             <div class="mb-3">
@@ -24,6 +24,16 @@
                 <label>Contenuto</label>
                 <textarea name="content" rows="10" class="form-control @error('content') is-invalid @enderror"
                   placeholder="Inserisci qui il tuo contenuto..." required>{{ old('content') }}</textarea>
+            </div>
+
+            <div class="mb-3">
+              <label>Immagine di copertina</label>
+              <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
+                placeholder="Inserisci il titolo">
+              <span>{{ $post->image }}</span>
+              @error('image')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
 
             @foreach ($tags as $tag)

@@ -29,10 +29,10 @@
             
             <div class="mb-3">
               <label>Immagine di copertina</label>
-              <input type="file" name="images" class="form-control @error('image') is-invalid @enderror"
+              <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
                 placeholder="Inserisci il titolo">
               <span>{{ $post->image }}</span>
-              @error('images')
+              @error('image')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
