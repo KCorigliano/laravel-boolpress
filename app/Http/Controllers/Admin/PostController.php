@@ -11,6 +11,7 @@ use Facade\Ignition\Tabs\Tab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -45,10 +46,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->validate([
+            "title" => "required|min:5",
+            "content" => "required|min:4",
+            "category_id" => "nullable",
+            "tags" => "nullable",
+            "image" => "nullable|image|max:500"
+        ]);
         $data = $request->all();
 
-        
         $post = new Post();
+        if (key_exists("image", $data)){
+            $post->image = Storage::put("postImages", $data['image']);        
+        }
         $post->fill($data);
         $post->user_id = Auth::user()->id;
         $post->save();
@@ -89,7 +99,18 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
+        // se data contiene la chiave "coverImg", indica che l'utente sta caricando un file
         $post->update($data);
+        if (key_exists("image", $data)) {
+            // controllare se a db esiste già un immagine
+            // Se si, PRIMA di caricare quella nuova, cancelliamo quella vecchia
+            if($post->image){
+                Storage::delete($post->image);
+            }
+            $image = Storage::put("postImages", $data["image"]);
+            $post->image=$image;
+            $post->save();
+        }
         $post->tags()->sync($data["tags"]);
         return redirect()->route('admin.post.show', $post->id);
     }
