@@ -5,12 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card px-4 py-2">
-                @if ($post->image)
-                    <img src="{{ asset('storage/' . $post->image) }}" alt="" class="img-fluid">
-                @else
-                    <img src="https://via.placeholder.com/1024x480" alt="" class="img-fluid">
-                @endif
-                <div class="row justify-content-between border-bottom align-items-center mb-4">
+                <div class="show-img d-flex">
+                    <span class="go-back"><a href="{{ route('admin.post.index') }}"><</a></span>
+                    @if ($post->image)
+                        <img class="offset-3" src="{{ asset('storage/' . $post->image) }}" alt="" class="post-img">
+                    @else
+                        <img class="offset-3" src="https://via.placeholder.com/1024x480" alt="" class="img-fluid">
+                    @endif
+                </div>
+                <div class="row justify-content-between border-top align-items-center my-4">
                     <h2 class="text-uppercase">{{$post->title}}</h2>
                     <p><a class="ms-auto" href="{{ route('admin.post.edit', $post->id) }}">Modifica</a></p>
                 </div>

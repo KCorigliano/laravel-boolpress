@@ -10962,3 +10962,15 @@ a.text-dark:focus {
   }
 }
 
+.show-img {
+  max-height: 150px;
+}
+
+.show-img img {
+  max-height: 150px;
+}
+
+.show-img .go-back {
+  font-size: 18px;
+}
+
