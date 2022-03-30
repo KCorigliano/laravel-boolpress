@@ -27,18 +27,15 @@
         },
         mounted() {
             this.routes=this.$router.getRoutes().filter((route) => route.meta.linkText);
-            console.log(this.routes)
             this.catchUser();
         },
         methods: {
-            catchUser(){
-                axios.get("/api/user").then(resp=> {
+            async catchUser(){
+                await axios.get("/api/user/").then(resp => {
                     this.user=resp.data;
+                    console.log(resp.data)
                     localStorage.setItem("user", JSON.stringify(resp.data));
                     window.dispatchEvent(new CustomEvent('storedUserChanged'));
-                }).catch((er)=>{
-                    console.error("Utente non loggato");
-                    localStorage.removeItem("user");
                 })
             }
         },
