@@ -9,7 +9,7 @@
                 {{route.meta.title}}
             </router-link>
             <a class="nav-links" href="/login" v-if="!user">Login</a>
-            <a class="nav-links" href="/admin" v-else>{{user.name}}</a>
+            <a class="nav-links" href="/admin/post" v-else>{{user.name}}</a>
         </div>
     </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
     <div class="card p-2">
         <div class="d-flex align-items-center border-bottom mb-2">
-            <span class="col-1"><a href="/"><</a></span>
-            <h1 class="text-center offset-4">{{post.title}}</h1>
+            <span class="back-btn btn-secondary"><a href="/"><</a></span>
+            <h1 class="text-center offset-5">{{post.title}}</h1>
         </div>
         <p>Content:</p>
         <h4 class="border-bottom mx-4 pb-2">{{post.content}}</h4>
@@ -37,5 +37,18 @@ h1{
 }
 p{
     font-style: italic;
+}
+.back-btn{
+    padding: 3px 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    a{
+        font-size: 18px;
+        color: white;
+        font-weight: bold;
+        &:hover{
+            text-decoration: none;
+        }
+    }
 }
 </style>

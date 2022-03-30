@@ -6837,7 +6837,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h1[data-v-71540182] {\n  justify-self: center;\n  justify-items: center;\n}\np[data-v-71540182] {\n  font-style: italic;\n}", ""]);
+exports.push([module.i, "h1[data-v-71540182] {\n  justify-self: center;\n  justify-items: center;\n}\np[data-v-71540182] {\n  font-style: italic;\n}\n.back-btn[data-v-71540182] {\n  padding: 3px 13px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.back-btn a[data-v-71540182] {\n  font-size: 18px;\n  color: white;\n  font-weight: bold;\n}\n.back-btn a[data-v-71540182]:hover {\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -39614,9 +39614,11 @@ var render = function () {
           ? _c("a", { staticClass: "nav-links", attrs: { href: "/login" } }, [
               _vm._v("Login"),
             ])
-          : _c("a", { staticClass: "nav-links", attrs: { href: "/admin" } }, [
-              _vm._v(_vm._s(_vm.user.name)),
-            ]),
+          : _c(
+              "a",
+              { staticClass: "nav-links", attrs: { href: "/admin/post" } },
+              [_vm._v(_vm._s(_vm.user.name))]
+            ),
       ],
       2
     ),
@@ -39983,7 +39985,7 @@ var render = function () {
     _c("div", { staticClass: "d-flex align-items-center border-bottom mb-2" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("h1", { staticClass: "text-center offset-4" }, [
+      _c("h1", { staticClass: "text-center offset-5" }, [
         _vm._v(_vm._s(_vm.post.title)),
       ]),
     ]),
@@ -40004,7 +40006,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "col-1" }, [
+    return _c("span", { staticClass: "back-btn btn-secondary" }, [
       _c("a", { attrs: { href: "/" } }, [_vm._v("<")]),
     ])
   },
