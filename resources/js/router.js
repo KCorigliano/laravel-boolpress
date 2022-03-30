@@ -7,8 +7,9 @@ import PostShow from "./pages/posts/Show.vue";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+    mode: 'history',
     routes:[
-        {path:"/homepage", component: Home, name:"home.index", meta: {title: "Homepage", linkText: "Home"}},
+        {path:"/", component: Home, name:"home.index", meta: {title: "Homepage", linkText: "Home"}},
         {path:"/contacts", component: Contacts, name:"contacts.index", meta: {title: "Contacts", linkText: "Contacs"}},
         {path:"/post/:post", component: PostShow, name:"posts.show", meta: {title: "Dettagli Post"}},
     ]

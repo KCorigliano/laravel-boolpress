@@ -16,9 +16,9 @@ class SendNewMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($_user)
     {
-        //
+        $this->user = $_user;
     }
 
     /**
@@ -28,6 +28,7 @@ class SendNewMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject("Hey admin" . $this->user->name)
+            ->view('mails.newContact');
     }
 }

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function(){
-    return view('home');
+    return view('guest.home');
 });
 
 Auth::routes();
@@ -29,6 +29,7 @@ Route::middleware('auth')
         Route::resource("post", "PostController");
     });
 
+
 Route::get("{any?}", function() {
-    return view("admin.home");
+    return view("guest.home");
 })->where("any", ".*");
