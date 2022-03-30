@@ -1,8 +1,12 @@
 <template>
     <div class="card p-2">
-        <h1 class="text-center">{{post.title}}</h1>
-        <h4>{{post.content}}</h4>
-        <p>Creato da: {{post.user.name}}</p>
+        <div class="d-flex align-items-center border-bottom mb-2">
+            <span class="col-1"><a href="/"><</a></span>
+            <h1 class="text-center offset-4">{{post.title}}</h1>
+        </div>
+        <p>Content:</p>
+        <h4 class="border-bottom mx-4 pb-2">{{post.content}}</h4>
+        <p class="mt-2">Creato da: {{post.user.name}}</p>
     </div>
 </template>
 
@@ -27,6 +31,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1{
+    justify-self: center;
+    justify-items: center;
+}
 p{
     font-style: italic;
 }

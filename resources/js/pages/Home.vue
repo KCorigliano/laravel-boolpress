@@ -2,7 +2,7 @@
     <div>
         <div class="mb-4 text-center">
             <h1>Lista dei post</h1>
-            <div class="d-flex card-row justify-content-center">
+            <div class="d-flex card-row justify-content-between pt-2">
                 <post-card
                     v-for="post, i in posts"
                     :key="i"

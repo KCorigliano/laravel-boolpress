@@ -1959,6 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/user").then(function (resp) {
         _this.user = resp.data;
         localStorage.setItem("user", JSON.stringify(resp.data));
+        window.dispatchEvent(new CustomEvent('storedUserChanged'));
       })["catch"](function (er) {
         console.error("Utente non loggato");
         localStorage.removeItem("user");
@@ -2257,6 +2258,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     title: String,
@@ -2296,6 +2301,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -6790,7 +6799,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".tags[data-v-14d08356] {\n  margin-right: 15px;\n}", ""]);
+exports.push([module.i, ".card[data-v-14d08356] {\n  width: calc(50% - 5px);\n}\n.tags[data-v-14d08356] {\n  margin-right: 15px;\n  padding: 2px 15px;\n  border-radius: 5px 15px;\n  font-size: 10px;\n}\n.text-start[data-v-14d08356] {\n  text-align: start;\n  padding-left: 15px;\n  font-style: italic;\n}", ""]);
 
 // exports
 
@@ -6809,7 +6818,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "p[data-v-71540182] {\n  font-style: italic;\n}", ""]);
+exports.push([module.i, "h1[data-v-71540182] {\n  justify-self: center;\n  justify-items: center;\n}\np[data-v-71540182] {\n  font-style: italic;\n}", ""]);
 
 // exports
 
@@ -39801,7 +39810,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "d-flex card-row justify-content-center" },
+        { staticClass: "d-flex card-row justify-content-between pt-2" },
         _vm._l(_vm.posts, function (post, i) {
           return _c("post-card", {
             key: i,
@@ -39885,24 +39894,36 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card col-3 mx-2 mb-2" },
+    { staticClass: "card mb-4" },
     [
-      _c("h3", { staticClass: "border-bottom" }, [_vm._v(_vm._s(_vm.title))]),
+      _c("h3", { staticClass: "border-bottom p-2" }, [
+        _vm._v(_vm._s(_vm.title)),
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-start" }, [_vm._v("Contenuto:")]),
       _vm._v(" "),
       _c("p", [_vm._v(_vm._s(_vm.content))]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "d-flex" },
-        _vm._l(_vm.tags, function (tag, i) {
-          return _c("span", { key: i, staticClass: "tags" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("#" + _vm._s(tag.name))]),
+      _vm.tags != 0
+        ? _c("div", { staticClass: "text-start" }, [
+            _c("p", [_vm._v("Tags:")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "d-flex px-4" },
+              _vm._l(_vm.tags, function (tag, i) {
+                return _c(
+                  "span",
+                  { key: i, staticClass: "btn-secondary tags" },
+                  [_vm._v(_vm._s(tag.name))]
+                )
+              }),
+              0
+            ),
           ])
-        }),
-        0
-      ),
+        : _vm._e(),
       _vm._v(" "),
-      _c("p", { staticClass: "fst-italic border-top mt-2" }, [
+      _c("p", { staticClass: "border-top mt-2" }, [
         _vm._v(_vm._s(_vm.userName.name)),
       ]),
       _vm._v(" "),
@@ -39940,14 +39961,35 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card p-2" }, [
-    _c("h1", { staticClass: "text-center" }, [_vm._v(_vm._s(_vm.post.title))]),
+    _c("div", { staticClass: "d-flex align-items-center border-bottom mb-2" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("h1", { staticClass: "text-center offset-4" }, [
+        _vm._v(_vm._s(_vm.post.title)),
+      ]),
+    ]),
     _vm._v(" "),
-    _c("h4", [_vm._v(_vm._s(_vm.post.content))]),
+    _c("p", [_vm._v("Content:")]),
     _vm._v(" "),
-    _c("p", [_vm._v("Creato da: " + _vm._s(_vm.post.user.name))]),
+    _c("h4", { staticClass: "border-bottom mx-4 pb-2" }, [
+      _vm._v(_vm._s(_vm.post.content)),
+    ]),
+    _vm._v(" "),
+    _c("p", { staticClass: "mt-2" }, [
+      _vm._v("Creato da: " + _vm._s(_vm.post.user.name)),
+    ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "col-1" }, [
+      _c("a", { attrs: { href: "/" } }, [_vm._v("<")]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -55848,7 +55890,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
-    path: "/",
+    path: "/home",
     component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: "home.index",
     meta: {
