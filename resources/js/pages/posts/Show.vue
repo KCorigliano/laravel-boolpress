@@ -1,10 +1,11 @@
 <template>
     <div class="card p-2">
         <div class="d-flex align-items-center border-bottom mb-2">
-            <span class="back-btn btn-secondary"><a href="/"><</a></span>
+            <span class="back-btn btn-secondary"><a href="/home"><</a></span>
             <h1 class="text-center offset-5">{{post.title}}</h1>
         </div>
         <p>Content:</p>
+        <img :src="post.image" alt="" />
         <h4 class="border-bottom mx-4 pb-2">{{post.content}}</h4>
         <p class="mt-2">Creato da: {{post.user.name}}</p>
     </div>
