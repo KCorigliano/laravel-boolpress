@@ -9,10 +9,16 @@
 
 .show-img{
     max-height: 150px;
+    position: relative;
     img{
-        max-height: 150px;
+        object-fit: cover;
     }
     .go-back{
         font-size: 18px;
+        position: absolute;
+        left: 15px;
+        a{
+            color: white;
+        }
     }
 }

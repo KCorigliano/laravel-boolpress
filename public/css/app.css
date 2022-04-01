@@ -10964,13 +10964,21 @@ a.text-dark:focus {
 
 .show-img {
   max-height: 150px;
+  position: relative;
 }
 
 .show-img img {
-  max-height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .show-img .go-back {
   font-size: 18px;
+  position: absolute;
+  left: 15px;
+}
+
+.show-img .go-back a {
+  color: white;
 }
 
